@@ -15,9 +15,18 @@
 *.dylib
 
 # Executables
+build/
+bin/
 *.exe
 *.out
 *.app
 *.i*86
 *.x86_64
 *.hex
+
+# Doxygen
+html/
+latex/
+
+# Mac stuff
+.DS_Store
