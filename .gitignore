@@ -29,4 +29,5 @@ html/
 latex/
 
 # Mac stuff
-.DS_Store
+*.DS_Store
+.timestamp
