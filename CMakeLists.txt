@@ -11,12 +11,10 @@ FIND_PACKAGE(PortAudio)
 INCLUDE_DIRECTORIES(${PORTAUDIO_INCLUDE_DIRS})
 LINK_DIRECTORIES(${PORTAUDIO_LIBRARIES})
 
-# TODO: manually add files for compilation, no globing
 include_directories(include)
 add_subdirectory(src)
 add_subdirectory(lang)
 
-# TODO: build final library
 add_library(${PROJECT_NAME} STATIC
 	$<TARGET_OBJECTS:audio> 
 	$<TARGET_OBJECTS:util>
