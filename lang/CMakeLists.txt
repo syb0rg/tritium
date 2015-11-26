@@ -1,5 +1,5 @@
-cmake_minimum_required(VERSION 2.8)
-project(Tritium_Lang)
+cmake_minimum_required(VERSION 3)
+project(tritium_Lang)
 
 include_directories(cmulex)
 include_directories(usenglish)
@@ -12,7 +12,3 @@ add_subdirectory(cmu_us_kal16)
 add_subdirectory(cmu_us_awb)
 add_subdirectory(cmu_us_rms)
 add_subdirectory(cmu_us_slt)
-
-#add_library(${PROJECT_NAME} INTERFACE)
-
-#target_link_libraries(${PROJECT_NAME} INTERFACE cmulex)
