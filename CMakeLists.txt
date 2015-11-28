@@ -39,7 +39,7 @@ install(TARGETS ${PROJECT_NAME}
 	LIBRARY DESTINATION lib
 	ARCHIVE DESTINATION lib
 	)
-install(FILES include/${PROJECT_NAME}.h
-	DESTINATION include
+install(DIRECTORY include/
+	DESTINATION include/${PROJECT_NAME}
 	)
 #add_dependencies(${PROJECT_NAME} ${DEPENDENCIES})
