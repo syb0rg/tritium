@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3)
+cmake_minimum_required(VERSION 3.0.2)
 include(ExternalProject)
 set(PROJECT_NAME tritium)
 project(${PROJECT_NAME})
