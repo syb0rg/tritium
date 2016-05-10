@@ -1,5 +1,8 @@
-tritium
-=======
+# ![tritium](media/tritium-logo.png)
+
+[![Build Status](https://travis-ci.org/syb0rg/tritium.svg?branch=master)](https://travis-ci.org/syb0rg/tritium)
+
+# tritium [![Build Status](https://travis-ci.org/syb0rg/tritium.svg?branch=master)](https://travis-ci.org/syb0rg/tritium)
 
 A free, premium quality speech synthesis engine written completely in C.  tritium was developed with the mindset of being portable, small, and fast.
 
