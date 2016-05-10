@@ -1,6 +1,4 @@
-<p align="center">
-    <img media/tritium-logo.png>
-</p>
+<img src="media/tritium-logo.png" alt="Tritium Logo" align="middle">
 
 # tritium [![Build Status](https://travis-ci.org/syb0rg/tritium.svg?branch=master)](https://travis-ci.org/syb0rg/tritium)
 
