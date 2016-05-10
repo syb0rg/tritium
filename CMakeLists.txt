@@ -63,9 +63,8 @@ add_library(${PROJECT_NAME} STATIC
 	$<TARGET_OBJECTS:cmu_us_slt>
 	)
 
-# TODO: refine this logic better
-if (NOT ${PORTAUDIO_FOUND})
-add_dependencies(${PROJECT_NAME} ${DEPENDENCIES})
+if (DEPENDENCIES)
+	add_dependencies(${PROJECT_NAME} ${DEPENDENCIES})
 endif ()
 
 install(TARGETS ${PROJECT_NAME}
