@@ -12,8 +12,8 @@ if (${PORTAUDIO_FOUND})
 else ()
 	ExternalProject_Add(
 		PortAudio
-		SVN_REPOSITORY      "https://subversion.assembla.com/svn/portaudio/portaudio/trunk/"
-		SVN_TRUST_CERT      1
+        	GIT_REPOSITORY      "https://git.assembla.com/portaudio.git"
+        	GIT_TAG             "e89441f968ca36bdf487454122fef9bbb2c72a36"
 		SOURCE_DIR          ${CMAKE_CURRENT_SOURCE_DIR}/lib/PortAudio
 		CONFIGURE_COMMAND   ${CMAKE_CURRENT_SOURCE_DIR}/lib/PortAudio/configure --prefix=<INSTALL_DIR>
 		BUILD_COMMAND       make
