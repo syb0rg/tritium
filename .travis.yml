@@ -9,9 +9,10 @@ matrix:
         apt:
           sources:
             - ubuntu-toolchain-r-test
-            - llvm-toolchain-precise
+            #- llvm-toolchain-precise
           packages:
-            - clang-3.6
+            #- clang-3.6
+            - clang
             - g++-5
     - os: linux
       compiler: gcc
