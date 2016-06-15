@@ -12,13 +12,11 @@ if (${PORTAUDIO_FOUND})
 else ()
 	ExternalProject_Add(
 		PortAudio
-        	GIT_REPOSITORY      "https://git.assembla.com/portaudio.git"
-        	GIT_TAG             "e89441f968ca36bdf487454122fef9bbb2c72a36"
+        	GIT_REPOSITORY      "https://github.com/syb0rg/PortAudio2.git"
+        	GIT_TAG             "178122c2d9a0f1cacf2d5b3af30936d5ec92d538"
 		SOURCE_DIR          ${CMAKE_CURRENT_SOURCE_DIR}/lib/PortAudio
-		CONFIGURE_COMMAND   ${CMAKE_CURRENT_SOURCE_DIR}/lib/PortAudio/configure --prefix=<INSTALL_DIR>
-		BUILD_COMMAND       make
 		UPDATE_COMMAND      ""
-		INSTALL_COMMAND     make install
+		INSTALL_COMMAND     ""
         	BUILD_IN_SOURCE     ON
 		LOG_DOWNLOAD        ON
 		LOG_UPDATE          ON
