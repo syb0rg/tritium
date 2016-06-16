@@ -26,4 +26,4 @@ Download and extract the compressed file.  Switch into the `build/` directory (i
 
 Run `cmake ..` and the configuation should begin.  This will create a Makefile tailored for running in your specific environment.  Any dependencies that you do not have will also be noted and flagged for downloading.
 
-Run `make`.  Any flagged dependencies will now begin downloading into their own special folder, where they will have to be configured and built so that tritium can link to their libraries.  Once everything has finished downloading and everything is linked together, the build should be complete.  To complete installation onto your system, make sure you have the privaleges and run `sudo make install`.
+Run `make`.  Any flagged dependencies will now begin downloading into their own special folder, where they will have to be configured and built so that tritium can link to their libraries.  Once everything has finished downloading and everything is linked together, the build should be complete.  To complete installation onto your system, make sure you have the privileges and run `sudo make install`.
