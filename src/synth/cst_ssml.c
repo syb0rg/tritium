@@ -1,6 +1,8 @@
 #include "tritium.h"
 #include "cst_tokenstream.h"
 
+int feat_copy_into(const cst_features *from,cst_features *to);
+
 static const char *ssml_whitespacesymbols;
 static const char *ssml_singlecharsymbols_general = "<>&/\";";
 static const char *ssml_singlecharsymbols_inattr = "=>;/\"";
@@ -97,7 +99,6 @@ static cst_utterance *ssml_apply_tag(const char *tag,
                                      cst_features *word_feats)
 {
     printf("SSML TAG %s\n",tag);
-    feat_print(stdout,attributes);
     printf("...\n");
 
     /* do stuff */

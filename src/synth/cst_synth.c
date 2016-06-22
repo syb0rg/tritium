@@ -20,6 +20,7 @@ CST_VAL_REGISTER_FUNCPTR(breakfunc,cst_breakfunc)
 #endif
 
 static cst_utterance *tokentosegs(cst_utterance *u);
+int feat_copy_into(const cst_features *from,cst_features *to);
 
 static const cst_synth_module synth_method_text[] = {
     { "tokenizer_func", default_tokenization },
