@@ -1,10 +1,26 @@
+#
+# Initial CMake and project setup
+#
+
 cmake_minimum_required(VERSION 3.0.2)
-include(ExternalProject)
+
 set(PROJECT_NAME tritium)
 project(${PROJECT_NAME})
+
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/")
 set_directory_properties(PROPERTIES EP_PREFIX ${CMAKE_BINARY_DIR}/library-build)
+
+include(ExternalProject)
+
+#
+# Setup GCC flags
+#
+
 set(CMAKE_C_FLAGS "-std=gnu11 -O3")
+
+#
+# Find/install dependencies
+#
 
 FIND_PACKAGE(PortAudio)
 if (${PORTAUDIO_FOUND})
@@ -34,6 +50,10 @@ else ()
 endif ()
 SET(LIBS ${LIBS} ${PORTAUDIO_LIBRARIES})
 LINK_DIRECTORIES(${PORTAUDIO_LIBRARIES})
+
+#
+# Final project settings
+#
 
 INCLUDE_DIRECTORIES(include)
 ADD_SUBDIRECTORY(src)

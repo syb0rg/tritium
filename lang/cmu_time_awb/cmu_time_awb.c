@@ -38,8 +38,8 @@ cst_voice *register_cmu_time_awb(const char *voxdir)
     cmu_time_awb_lex.name = "cmu_time_awb";
     cmu_time_awb_lex.num_entries = cmu_time_awb_num_entries;
     cmu_time_awb_lex.num_bytes = cmu_time_awb_num_bytes;
-    cmu_time_awb_lex.data = cmu_time_awb_lex_data;
-    cmu_time_awb_lex.phone_table = cmu_time_awb_lex_phone_table;
+    cmu_time_awb_lex.data = (unsigned char*) cmu_time_awb_lex_data;
+    cmu_time_awb_lex.phone_table = (char**) cmu_time_awb_lex_phone_table;
     cmu_time_awb_lex.syl_boundary = cmu_syl_boundary;
     cmu_time_awb_lex.lts_rule_set = NULL;
     cmu_time_awb_lex.phone_hufftable = cmu_time_awb_lex_phones_huff_table;
