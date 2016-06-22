@@ -8,12 +8,11 @@ set(CMAKE_C_FLAGS "-std=gnu11 -O3")
 
 FIND_PACKAGE(PortAudio)
 if (${PORTAUDIO_FOUND})
-    INCLUDE_DIRECTORIES(${PORTAUDIO_INCLUDE_DIRS})
+	INCLUDE_DIRECTORIES(${PORTAUDIO_INCLUDE_DIRS})
 else ()
 	ExternalProject_Add(
 		PortAudio
         	GIT_REPOSITORY      "https://github.com/syb0rg/PortAudio2.git"
-        	GIT_TAG             "178122c2d9a0f1cacf2d5b3af30936d5ec92d538"
 		SOURCE_DIR          ${CMAKE_CURRENT_SOURCE_DIR}/lib/PortAudio
 		UPDATE_COMMAND      ""
 		INSTALL_COMMAND     ""
@@ -36,11 +35,11 @@ endif ()
 SET(LIBS ${LIBS} ${PORTAUDIO_LIBRARIES})
 LINK_DIRECTORIES(${PORTAUDIO_LIBRARIES})
 
-include_directories(include)
-add_subdirectory(src)
-add_subdirectory(lang)
+INCLUDE_DIRECTORIES(include)
+ADD_SUBDIRECTORY(src)
+ADD_SUBDIRECTORY(lang)
 
-add_library(${PROJECT_NAME} STATIC
+ADD_LIBRARY(${PROJECT_NAME} STATIC
 	$<TARGET_OBJECTS:audio> 
 	$<TARGET_OBJECTS:util>
 	$<TARGET_OBJECTS:regex>
@@ -62,13 +61,14 @@ add_library(${PROJECT_NAME} STATIC
 	)
 
 if (DEPENDENCIES)
-	add_dependencies(${PROJECT_NAME} ${DEPENDENCIES})
+	MESSAGE (STATUS "Any missing dependencies will be downloaded upon running \"make\"")
+	ADD_DEPENDENCIES(${PROJECT_NAME} ${DEPENDENCIES})
 endif ()
 
-install(TARGETS ${PROJECT_NAME}
+INSTALL(TARGETS ${PROJECT_NAME}
 	LIBRARY DESTINATION lib
 	ARCHIVE DESTINATION lib
 	)
-install(DIRECTORY include/
+INSTALL(DIRECTORY include/
 	DESTINATION include/${PROJECT_NAME}
 	)
