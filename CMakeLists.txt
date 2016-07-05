@@ -17,7 +17,6 @@ include(ExternalProject)
 #
 
 set(CMAKE_C_FLAGS "-std=gnu11 -O3")
-add_definitions(-DCST_NO_SOCKETS)
 
 #
 # Find/install dependencies
@@ -51,6 +50,9 @@ else ()
 endif ()
 SET(LIBS ${LIBS} ${PORTAUDIO_LIBRARIES})
 LINK_DIRECTORIES(${PORTAUDIO_LIBRARIES})
+
+#slight hack for portability, probably needs fixing later
+add_definitions(-DCST_NO_SOCKETS) 
 
 #
 # Final project settings
