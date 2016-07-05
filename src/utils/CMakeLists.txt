@@ -11,7 +11,7 @@ set(UTIL_SOURCE_FILES
 	cst_val_const.c
 	cst_val_user.c 
 	cst_args.c 
-	cst_mmap_posix.c
+	cst_mmap.c
 	cst_file_stdio.c
 )
 add_library(util OBJECT ${UTIL_SOURCE_FILES})

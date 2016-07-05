@@ -17,6 +17,7 @@ include(ExternalProject)
 #
 
 set(CMAKE_C_FLAGS "-std=gnu11 -O3")
+add_definitions(-DCST_NO_SOCKETS)
 
 #
 # Find/install dependencies
@@ -28,11 +29,11 @@ if (${PORTAUDIO_FOUND})
 else ()
 	ExternalProject_Add(
 		PortAudio
-        	GIT_REPOSITORY      "https://github.com/syb0rg/PortAudio2.git"
+        GIT_REPOSITORY      "https://github.com/syb0rg/PortAudio2.git"
 		SOURCE_DIR          ${CMAKE_CURRENT_SOURCE_DIR}/lib/PortAudio
 		UPDATE_COMMAND      ""
 		INSTALL_COMMAND     ""
-        	BUILD_IN_SOURCE     ON
+        BUILD_IN_SOURCE     ON
 		LOG_DOWNLOAD        ON
 		LOG_UPDATE          ON
 		LOG_CONFIGURE       ON
