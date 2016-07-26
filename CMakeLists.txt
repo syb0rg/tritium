@@ -8,7 +8,7 @@ set(PROJECT_NAME tritium)
 project(${PROJECT_NAME})
 
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/")
-set_directory_properties(PROPERTIES EP_PREFIX ${CMAKE_BINARY_DIR}/library-build)
+set_directory_properties(PROPERTIES EP_PREFIX ${CMAKE_BINARY_DIR}/build-data)
 
 include(ExternalProject)
 
@@ -29,7 +29,7 @@ else ()
 	ExternalProject_Add(
 		PortAudio
         GIT_REPOSITORY      "https://github.com/syb0rg/PortAudio2.git"
-		SOURCE_DIR          ${CMAKE_CURRENT_SOURCE_DIR}/lib/PortAudio
+		SOURCE_DIR          ${CMAKE_BINARY_DIR}/lib/PortAudio
 		UPDATE_COMMAND      ""
 		INSTALL_COMMAND     ""
         BUILD_IN_SOURCE     ON
@@ -44,14 +44,14 @@ else ()
 	ExternalProject_Get_Property(PortAudio BINARY_DIR)
 	SET(PORTAUDIO_SOURCE_DIR ${SOURCE_DIR})
 	SET(PORTAUDIO_BINARY_DIR ${BINARY_DIR})
-	SET(PORTAUDIO_LIBRARIES ${PORTAUDIO_BINARY_DIR}/lib/.libs/libportaudio.dylib)
+	SET(PORTAUDIO_LIBRARIES ${PORTAUDIO_SOURCE_DIR}/lib/.libs/libportaudio.dylib)
 	INCLUDE_DIRECTORIES(${PORTAUDIO_SOURCE_DIR}/include)
 	SET(DEPENDENCIES ${DEPENDENCIES} PortAudio)
 endif ()
 SET(LIBS ${LIBS} ${PORTAUDIO_LIBRARIES})
 LINK_DIRECTORIES(${PORTAUDIO_LIBRARIES})
 
-#slight hack for portability, probably needs fixing later
+# slight hack for portability, probably needs fixing later
 add_definitions(-DCST_NO_SOCKETS) 
 
 #
