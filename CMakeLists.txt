@@ -44,12 +44,15 @@ else ()
 	ExternalProject_Get_Property(PortAudio BINARY_DIR)
 	SET(PORTAUDIO_SOURCE_DIR ${SOURCE_DIR})
 	SET(PORTAUDIO_BINARY_DIR ${BINARY_DIR})
-	SET(PORTAUDIO_LIBRARIES ${PORTAUDIO_SOURCE_DIR}/lib/.libs/libportaudio.dylib)
+	if (WIN32)
+		SET(PORTAUDIO_LIBRARIES ${PORTAUDIO_SOURCE_DIR}/libportaudio_static.a)
+	else ()
+		SET(PORTAUDIO_LIBRARIES ${PORTAUDIO_SOURCE_DIR}/lib/.libs/libportaudio.dylib)
+	endif ()
 	INCLUDE_DIRECTORIES(${PORTAUDIO_SOURCE_DIR}/include)
 	SET(DEPENDENCIES ${DEPENDENCIES} PortAudio)
 endif ()
 SET(LIBS ${LIBS} ${PORTAUDIO_LIBRARIES})
-LINK_DIRECTORIES(${PORTAUDIO_LIBRARIES})
 
 # slight hack for portability, probably needs fixing later
 add_definitions(-DCST_NO_SOCKETS) 
@@ -82,7 +85,9 @@ ADD_LIBRARY(${PROJECT_NAME} STATIC
 	$<TARGET_OBJECTS:cmu_us_rms>
 	$<TARGET_OBJECTS:cmu_us_slt>
 	)
-
+message(${LIBS})
+TARGET_LINK_LIBRARIES(${PROJECT_NAME} ${LIBS})
+	
 if (DEPENDENCIES)
 	MESSAGE (STATUS "Any missing dependencies will be downloaded upon running \"make\"")
 	ADD_DEPENDENCIES(${PROJECT_NAME} ${DEPENDENCIES})
