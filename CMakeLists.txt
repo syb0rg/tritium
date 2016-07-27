@@ -48,7 +48,13 @@ else ()
 	INCLUDE_DIRECTORIES(${PORTAUDIO_SOURCE_DIR}/include)
 	SET(DEPENDENCIES ${DEPENDENCIES} PortAudio)
 endif ()
-SET(LIBS ${LIBS} ${PORTAUDIO_LIBRARIES})
+
+if (WIN32)
+	SET(WIN32_LIBS ${WIN32_LIBS} setupapi winmm)
+else ()
+	SET(UNIX_LIBS ${UNIX_LIBS} m pthread)
+endif ()
+SET(LIBS ${LIBS} ${PORTAUDIO_LIBRARIES} ${UNIX_LIBS} ${WIN32_LIBS})
 
 # slight hack for portability, probably needs fixing later
 add_definitions(-DCST_NO_SOCKETS) 
