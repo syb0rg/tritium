@@ -67,7 +67,7 @@ include_directories(include)
 add_subdirectory(src)
 add_subdirectory(lang)
 add_subdirectory(main)
-add_subdirectory(tests EXCLUDE_FROM_ALL)
+#add_subdirectory(tests EXCLUDE_FROM_ALL)
 
 add_library(${PROJECT_NAME} STATIC
 	$<TARGET_OBJECTS:audio> 
