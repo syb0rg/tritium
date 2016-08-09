@@ -22,9 +22,9 @@ set(CMAKE_C_FLAGS "-std=gnu11 -O3")
 # Find/install dependencies
 #
 
-FIND_PACKAGE(PortAudio)
+find_package(PortAudio)
 if (${PORTAUDIO_FOUND})
-	INCLUDE_DIRECTORIES(${PORTAUDIO_INCLUDE_DIRS})
+	include_directories(${PORTAUDIO_INCLUDE_DIRS})
 else ()
 	ExternalProject_Add(
 		PortAudio
@@ -42,11 +42,11 @@ else ()
 	)
 	ExternalProject_Get_Property(PortAudio SOURCE_DIR)
 	ExternalProject_Get_Property(PortAudio BINARY_DIR)
-	SET(PORTAUDIO_SOURCE_DIR ${SOURCE_DIR})
-	SET(PORTAUDIO_BINARY_DIR ${BINARY_DIR})
-	SET(PORTAUDIO_LIBRARIES ${PORTAUDIO_SOURCE_DIR}/libportaudio_static.a)
-	INCLUDE_DIRECTORIES(${PORTAUDIO_SOURCE_DIR}/include)
-	SET(DEPENDENCIES ${DEPENDENCIES} PortAudio)
+	set(PORTAUDIO_SOURCE_DIR ${SOURCE_DIR})
+	set(PORTAUDIO_BINARY_DIR ${BINARY_DIR})
+	set(PORTAUDIO_LIBRARIES ${PORTAUDIO_SOURCE_DIR}/libportaudio_static.a)
+	include_directories(${PORTAUDIO_SOURCE_DIR}/include)
+	set(DEPENDENCIES ${DEPENDENCIES} PortAudio)
 endif ()
 
 if (WIN32)
@@ -63,12 +63,13 @@ add_definitions(-DCST_NO_SOCKETS)
 # Final project settings
 #
 
-INCLUDE_DIRECTORIES(include)
-ADD_SUBDIRECTORY(src)
-ADD_SUBDIRECTORY(lang)
-ADD_SUBDIRECTORY(main)
+include_directories(include)
+add_subdirectory(src)
+add_subdirectory(lang)
+add_subdirectory(main)
+add_subdirectory(tests EXCLUDE_FROM_ALL)
 
-ADD_LIBRARY(${PROJECT_NAME} STATIC
+add_library(${PROJECT_NAME} STATIC
 	$<TARGET_OBJECTS:audio> 
 	$<TARGET_OBJECTS:util>
 	$<TARGET_OBJECTS:regex>
@@ -87,19 +88,19 @@ ADD_LIBRARY(${PROJECT_NAME} STATIC
 	$<TARGET_OBJECTS:cmu_us_awb>
 	$<TARGET_OBJECTS:cmu_us_rms>
 	$<TARGET_OBJECTS:cmu_us_slt>
-	)
-message(${LIBS})
-TARGET_LINK_LIBRARIES(${PROJECT_NAME} ${LIBS})
+)
+
+target_link_libraries(${PROJECT_NAME} ${LIBS})
 	
 if (DEPENDENCIES)
-	MESSAGE (STATUS "Any missing dependencies will be downloaded upon running \"make\"")
-	ADD_DEPENDENCIES(${PROJECT_NAME} ${DEPENDENCIES})
+	message(STATUS "Any missing dependencies will be downloaded upon running \"make\"")
+	add_dependencies(${PROJECT_NAME} ${DEPENDENCIES})
 endif ()
 
-INSTALL(TARGETS ${PROJECT_NAME}
-	LIBRARY DESTINATION lib
-	ARCHIVE DESTINATION lib
-	)
-INSTALL(DIRECTORY include/
-	DESTINATION include/${PROJECT_NAME}
-	)
+install(TARGETS ${PROJECT_NAME}
+        LIBRARY DESTINATION lib
+        ARCHIVE DESTINATION lib
+)
+install(DIRECTORY include/
+        DESTINATION include/${PROJECT_NAME}
+)
