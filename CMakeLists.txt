@@ -56,9 +56,6 @@ else ()
 endif ()
 SET(LIBS ${LIBS} ${PORTAUDIO_LIBRARIES} ${UNIX_LIBS} ${WIN32_LIBS})
 
-# slight hack for portability, probably needs fixing later
-add_definitions(-DCST_NO_SOCKETS) 
-
 #
 # Final project settings
 #
@@ -89,7 +86,7 @@ add_library(${PROJECT_NAME} STATIC
 	$<TARGET_OBJECTS:cmu_us_rms>
 	$<TARGET_OBJECTS:cmu_us_slt>
 )
-
+target_compile_features(${PROJECT_NAME} PRIVATE c_restrict)
 target_link_libraries(${PROJECT_NAME} ${LIBS})
 	
 if (DEPENDENCIES)
