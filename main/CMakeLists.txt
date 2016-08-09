@@ -6,6 +6,7 @@ set(PROGRAMS 	compile_regexes
 	
 foreach (program ${PROGRAMS})
 	add_executable(${program} ${program} tritium_voice_list.c)
+    target_compile_features(${program} PRIVATE c_restrict)
 	target_link_libraries(${program} ${PROJECT_NAME} ${PORTAUDIO_LIBRARIES})
 	set_target_properties (${program} 	
 							PROPERTIES
