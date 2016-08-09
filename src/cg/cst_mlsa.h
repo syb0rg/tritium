@@ -36,10 +36,6 @@
 /*          Author :  Tomoki Toda (tomoki@ics.nitech.ac.jp)          */
 /*          Date   :  June 2004                                      */
 /*                                                                   */
-/*          Modified by Alan W Black (awb@cs.cmu.edu) Jan 2006       */
-/*          taken from festvox/src/vc/ back into Festival            */
-/*          Modified by Alan W Black (awb@cs.cmu.edu) Nov 2007       */
-/*          taken from Festival into Tritium                           */
 /*-------------------------------------------------------------------*/
 /*                                                                   */
 /*  Subroutine for Speech Synthesis                                  */
