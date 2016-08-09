@@ -101,7 +101,7 @@ int cst_free_part_file(cst_filemap *fmap)
     return 0;
 }
 
-#elif __unix__
+#elif (defined(__unix__) || defined(__unix)) || (defined(__APPLE__) && defined(__MACH__))
 
 #include <sys/types.h>
 #include <sys/mman.h>
