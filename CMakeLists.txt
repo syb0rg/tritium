@@ -16,7 +16,7 @@ include(ExternalProject)
 # Setup GCC flags
 #
 
-set(CMAKE_C_FLAGS "-std=gnu11 -O3")
+set(CMAKE_C_FLAGS "-O3")
 
 #
 # Find/install dependencies
