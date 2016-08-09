@@ -8,3 +8,8 @@ set(SPEECH_SOURCE_FILES
 	rateconv.c
 )
 add_library(speech OBJECT ${SPEECH_SOURCE_FILES})
+target_compile_features(speech PRIVATE c_restrict)
+
+if (DEPENDENCIES)
+    add_dependencies(speech ${DEPENDENCIES})
+endif ()

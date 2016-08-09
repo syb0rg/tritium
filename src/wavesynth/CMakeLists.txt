@@ -7,3 +7,8 @@ set(WAVESYNTH_SOURCE_FILES
 	cst_reflpc.c
 )
 add_library(wavesynth OBJECT ${WAVESYNTH_SOURCE_FILES})
+target_compile_features(wavesynth PRIVATE c_restrict)
+
+if (DEPENDENCIES)
+    add_dependencies(wavesynth ${DEPENDENCIES})
+endif ()

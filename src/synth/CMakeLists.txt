@@ -8,3 +8,8 @@ set(SYNTH_SOURCE_FILES
 	tritium.c
 )
 add_library(synth OBJECT ${SYNTH_SOURCE_FILES})
+target_compile_features(synth PRIVATE c_restrict)
+
+if (DEPENDENCIES)
+    add_dependencies(synth ${DEPENDENCIES})
+endif ()

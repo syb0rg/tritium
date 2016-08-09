@@ -4,3 +4,8 @@ set(REGEX_SOURCE_FILES
 	regsub.c
 )
 add_library(regex OBJECT ${REGEX_SOURCE_FILES})
+target_compile_features(regex PRIVATE c_restrict)
+
+if (DEPENDENCIES)
+    add_dependencies(regex ${DEPENDENCIES})
+endif ()
