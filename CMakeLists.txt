@@ -44,7 +44,11 @@ else ()
 	ExternalProject_Get_Property(PortAudio BINARY_DIR)
 	set(PORTAUDIO_SOURCE_DIR ${SOURCE_DIR})
 	set(PORTAUDIO_BINARY_DIR ${BINARY_DIR})
-	set(PORTAUDIO_LIBRARIES ${PORTAUDIO_SOURCE_DIR}/libportaudio_static.a)
+	if (APPLE)
+		set(PORTAUDIO_LIBRARIES ${PORTAUDIO_SOURCE_DIR}/libportaudio.dylib)
+	elseif (UNIX)
+		set(PORTAUDIO_LIBRARIES ${PORTAUDIO_SOURCE_DIR}/libportaudio.so)
+	endif ()
 	include_directories(${PORTAUDIO_SOURCE_DIR}/include)
 	set(DEPENDENCIES ${DEPENDENCIES} PortAudio)
 endif ()
@@ -67,7 +71,7 @@ add_subdirectory(main)
 #add_subdirectory(tests EXCLUDE_FROM_ALL)
 
 add_library(${PROJECT_NAME} STATIC
-	$<TARGET_OBJECTS:audio> 
+	$<TARGET_OBJECTS:audio>
 	$<TARGET_OBJECTS:util>
 	$<TARGET_OBJECTS:regex>
 	$<TARGET_OBJECTS:hrg>
@@ -88,7 +92,7 @@ add_library(${PROJECT_NAME} STATIC
 )
 target_compile_features(${PROJECT_NAME} PRIVATE c_restrict)
 target_link_libraries(${PROJECT_NAME} ${LIBS})
-	
+
 if (DEPENDENCIES)
 	message(STATUS "Any missing dependencies will be downloaded upon running \"make\"")
 	add_dependencies(${PROJECT_NAME} ${DEPENDENCIES})
